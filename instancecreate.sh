@@ -35,7 +35,7 @@ do
 #update route 53 record
 aws route53 change-resource-record-sets \
   --hosted-zone-id $hosted_zone_id \
-  --change-batch "{
+  --change-batch '{
     "Changes": [
       {
         "Action": "UPSERT",
@@ -47,6 +47,6 @@ aws route53 change-resource-record-sets \
         }
       }
     ]
-  }"
+  }'
 
 done
