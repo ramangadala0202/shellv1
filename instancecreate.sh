@@ -25,12 +25,12 @@ do
   r53_record=$instance.$domain_name
 
   else
-  fi
   IP=$(aws ec2 describe-instances \
   --instance-ids $instance_id \
   --query 'Reservations[0].Instances[0].PublicIpAddress' \
   --output text)
   r53_record=$domain_name
+  fi
 
 #update route 53 record
 aws route53 change-resource-record-sets \
