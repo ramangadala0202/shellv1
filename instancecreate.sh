@@ -7,5 +7,5 @@ hosted_zone_id="Z07986632RTOI84DPGWLC"
 
 for instance in $@
 do
-  echo "creating instance : $instance"
+   echo "creating instance : $instance"
 done
