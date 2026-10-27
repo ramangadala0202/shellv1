@@ -5,9 +5,9 @@
     course: Devops
     Trainer: Ram
   vars_files:
-    extra.yaml
+    - extra.yaml
   vars_prompt:
-    - name=username
+    - name= username
       prompt: Please enter username
       private: false
   tasks: # tasks == modules == collections
@@ -35,7 +35,7 @@
        msg: "{{name}}, {{class}}"
    - name: prompt
      debug:
-       msg: "{{username}}""
+       msg: "{{username}}"
 
 
 
