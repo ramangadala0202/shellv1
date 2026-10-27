@@ -1,6 +1,6 @@
 - name: "ping demo"
-  hosts: local #target ansible server itself
-  connection: local # it will not expect credentials
+  hosts: mongoDB #target ansible server itself
+  become: true
   tasks: # tasks == modules == collections
    - name: "ping localhost"
      ping:
