@@ -4,6 +4,7 @@
   tasks: # tasks == modules == collections
    - name: "ping localhost"
      ping:
+   - name: "print message"
      ansible.builtin.debug:
      msg: "Hello from Ansible"
 
