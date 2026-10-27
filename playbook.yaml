@@ -4,6 +4,12 @@
   vars:
     course: Devops
     Trainer: Ram
+  vars_files:
+    extra.yaml
+  vars_prompt:
+    - name=username
+      prompt: Please enter username
+      private: false
   tasks: # tasks == modules == collections
    - name: "ping localhost"
      ping:
@@ -24,6 +30,12 @@
        course: Linux
      debug:
        msg: "Hi, {{Trainer}}, learning {{course}}"
+   - name: files 
+     debug:
+       msg: "{{name}}, {{class}}"
+   - name: prompt
+     debug:
+       msg: {{username}}
 
 
 
