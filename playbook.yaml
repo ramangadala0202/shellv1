@@ -5,6 +5,6 @@
    - name: "ping localhost"
      ping:
      ansible.builtin.debug:
-      msg: "Hello from Ansible"
+     msg: "Hello from Ansible"
 
 
