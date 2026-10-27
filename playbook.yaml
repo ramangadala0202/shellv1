@@ -7,7 +7,7 @@
   vars_files:
     - extra.yaml
   vars_prompt:
-    - name= username
+    - name: username
       prompt: Please enter username
       private: false
   tasks: # tasks == modules == collections
