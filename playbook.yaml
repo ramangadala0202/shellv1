@@ -1,6 +1,9 @@
 - name: "ping demo"
   hosts: mongoDB #target ansible server itself
   become: true
+  vars:
+    course: Devops
+    Trainer: Ram
   tasks: # tasks == modules == collections
    - name: "ping localhost"
      ping:
@@ -16,6 +19,9 @@
        name: nginx
        state: started
        enabled: yes
+   - name: print
+     debug:
+       msg: "Hi, {{Trainer}}, learning {{course}}"
 
 
 
