@@ -35,7 +35,7 @@
        msg: "{{name}}, {{class}}"
    - name: prompt
      debug:
-       msg: {{username}}
+       msg: "{{username}}""
 
 
 
