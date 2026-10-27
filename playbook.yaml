@@ -20,6 +20,8 @@
        state: started
        enabled: yes
    - name: print
+     vars:
+       course: Linux
      debug:
        msg: "Hi, {{Trainer}}, learning {{course}}"
 
