@@ -2,7 +2,7 @@
   hosts: localhost #target ansible server itself
   connection: local # it will not expect credentials
   tasks: # tasks == modules == collections
-   -name: ping localhost
+   - name: ping localhost
      ping:
 
 
