@@ -7,5 +7,11 @@
    - name: "print message"
      ansible.builtin.debug:
        msg: "Hello from Ansible"
+   - name: "Install Package"
+     ansible.builtin.package:
+       name: nginx
+       state: present
+
+
 
 
