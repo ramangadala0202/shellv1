@@ -6,6 +6,6 @@
      ping:
    - name: "print message"
      ansible.builtin.debug:
-     msg: "Hello from Ansible"
+       msg: "Hello from Ansible"
 
 
