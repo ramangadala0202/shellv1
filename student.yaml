@@ -1,0 +1,16 @@
+- first_name: "Ram Chand"   # As this line started with minus (-) it is list
+  last_name: "A"
+  DOB:"01-01-2000"
+  # - for list
+  addresses:
+  - type: "permanent" 
+    doorno: "1-13"
+    village: "Guntakoduru"
+    District: "Krishna"
+  - type: "temporary" 
+    doorno: "10-13"
+    village: "Guntakoduru"
+    District: "Krishna"
+    skills:   # As this line started normally it is map
+     OS: "Linux"
+     IDE: "VSCode"
