@@ -5,3 +5,8 @@
   - name: facts 
     debug:
       msg: "{{ansible_facts}}"
+
+  - name: print some info
+    debug:
+      msg: |
+        OS family: {{ansible_facts.all_ipv4_addresses}}
