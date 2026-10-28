@@ -1,8 +1,8 @@
--name: facts_gather
+- name: facts_gather
   hosts: local
- connection: local
+  connection: local
 
- tasks:
- - name: facts 
-   debug:
-     msg: "{{ansible_facts}}"
+  tasks:
+  - name: facts 
+    debug:
+      msg: "{{ansible_facts}}"
