@@ -1,0 +1,16 @@
+- name: install nginx
+  hosts: local
+  connection: local
+
+  tasks:
+    - name: install ngnix
+      dnf:
+        state: present
+        name: ngnix
+      when: ansible_facts.os_family == "Redhat"
+
+    - name: install ngnix
+      dnf:
+        state: absent
+        name: ngnix
+      when: ansible_facts.os_family != "Redhat"
