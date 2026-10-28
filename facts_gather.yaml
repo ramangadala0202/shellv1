@@ -2,9 +2,9 @@
   hosts: mongoDB
 
   tasks:
-  - name: facts 
-    debug:
-      msg: "{{ansible_facts}}"
+  # - name: facts 
+  #   debug:
+  #     msg: "{{ansible_facts}}"
 
   - name: print some info
     debug:
