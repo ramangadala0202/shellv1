@@ -11,6 +11,7 @@
       Trainer: ram
       status: Good
   tasks:
-    debug:
-      msg: |
-        name: "{{course}}"
+    - name: Print course datatype
+      debug:
+        msg: |
+          name: "{{course}} : {{course| type_debug}}"
