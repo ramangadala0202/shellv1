@@ -1,0 +1,16 @@
+- name: datatypes
+  hosts: local
+  connection: local
+  vars:
+    course: "AIOPS with DEVSECOPS"
+    time: 5
+    exact: 5.5
+    members: [ram,sai]
+    live_sessions: yes
+    more_details:
+      Trainer: ram
+      status: Good
+  tasks:
+    debug:
+      msg: |
+        name: "{{course}} : {{course| type_debug}}"
