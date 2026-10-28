@@ -13,4 +13,4 @@
   tasks:
     debug:
       msg: |
-        name: "{{course}} : {{course| type_debug}}"
+        name: "{{course}}"
