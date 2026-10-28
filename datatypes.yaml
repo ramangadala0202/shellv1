@@ -10,7 +10,7 @@
     more_details:
       Trainer: ram
       status: Good
-  tasks:
+- tasks:
     debug:
       msg: |
         name: "{{course}} : {{course| type_debug}}"
