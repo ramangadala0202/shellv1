@@ -15,3 +15,11 @@
       debug:
         msg: |
           name: "{{course}} : {{course| type_debug}}"
+          time: "{{time}} : {{time| type_debug}}"
+          exact_time: "{{exact}} : {{exact| type_debug}}"
+          name: "{{members}} : {{members| type_debug}}"
+          live_session: "{{live_sessions}} : {{live_sessions | type_debug}}"
+          details: "{{more_details.Trainer}} : {{more_details.Trainer| type_debug}}"
+          detail: "{{more_details.status}} : {{more_details.status| type_debug}}"
+
+          
