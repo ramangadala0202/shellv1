@@ -1,6 +1,5 @@
 - name: facts_gather
-  hosts: local
-  connection: local
+  hosts: mongoDB
 
   tasks:
   - name: facts 
