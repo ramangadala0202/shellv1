@@ -1,6 +1,7 @@
 - name: install packages
   hosts: local
   connection: local
+  become: yes
   vars:
    packages:
     - nginx
@@ -12,4 +13,4 @@
      dnf:
       name: "{{ item }}"
       state: present
-     loop: packages
+     loop: "{{packages}}"
