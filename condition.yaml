@@ -1,0 +1,18 @@
+- name: conditions
+  hosts: local
+  connection: local
+  vars:
+    number: 14
+  tasks:
+    - name: condition
+      debug:
+        msg: "{{number}} is an even"
+      when: {{number}} % 2 == 0
+    
+    - name: condition odd
+      debug:
+        msg: "{{number}} is an odd"
+      when: {{number}} % 2 !== 0
+
+
+  
