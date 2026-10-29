@@ -5,7 +5,7 @@
    - name: commandvsshell
      #command: cat /etc/passwd | grep ec2-user
      shell: cat /etc/passwd | grep ec2-user
-     register: ec2-user_output
+     register: ec2_user_output
 
    - name: print
      debug:
