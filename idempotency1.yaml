@@ -4,7 +4,7 @@
   tasks:
    - name: commandvsshell
      #command: cat /etc/passwd | grep ec2-user
-     shell: cat /etc/passwd | grep ec2-user
+     shell: cat /etc/passwd | grep ram
      register: ec2_user_output
 
    - name: print
