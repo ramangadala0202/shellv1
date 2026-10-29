@@ -22,4 +22,4 @@
 
    - name: print
      debug:
-     msg: "{{ec2_output}}"
+       msg: "{{ec2_output}}"
