@@ -3,7 +3,8 @@
   connection: local
   tasks:
    - name: commandvsshell
-     command: cat /etc/passwd | grep ec2-user
+     #command: cat /etc/passwd | grep ec2-user
+     shell: cat /etc/passwd | grep ec2-user
      register: ec2-user_output
 
    - name: print
