@@ -9,4 +9,4 @@
 
    - name: print
      debug:
-      msg: "{{ec2-user_output}}"
+      msg: "{{ec2_user_output}}"
