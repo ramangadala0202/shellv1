@@ -1,0 +1,11 @@
+- name: command vs shell
+  hosts: local
+  connection: local
+  tasks:
+   - name: commandvsshell
+     command: cat /etc/passwd | grep ec2-user
+     register: ec2-user_output
+
+   - name: print
+     debug:
+      msg: "{{ec2-user_output}}"
