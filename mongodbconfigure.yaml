@@ -34,7 +34,7 @@
    - name: start mongodb
      systemd_service:
        name: mongod
-       state: started
+       state: restarted
        enabled: true
      
    
