@@ -18,10 +18,18 @@
        state: started
        enabled: true
 
-   - name: configure
+  #  - name: configure
+  #    replace:
+  #     src: /etc/mongod.conf
+  #     regexp: '127.0.0.1'
+  #     replace: '0.0.0.0'
+
+   - name: Configure MongoDB bind IP
      replace:
-      src: /etc/mongod.conf
-      regexp: '127.0.0.1'
-      replace: '0.0.0.0'
+        path: /etc/mongod.conf
+        regexp: '127\.0\.0\.1'
+        replace: '0.0.0.0'
+        backup: true
+        notify: Restart MongoDB
    
 
