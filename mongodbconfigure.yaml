@@ -30,6 +30,12 @@
         regexp: '127\.0\.0\.1'
         replace: '0.0.0.0'
         backup: true
+
+   - name: start mongodb
+     systemd_service:
+       name: mongod
+       state: started
+       enabled: true
      
    
 
