@@ -18,24 +18,24 @@
        state: started
        enabled: true
 
-  #  - name: configure
-  #    replace:
-  #     src: /etc/mongod.conf
-  #     regexp: '127.0.0.1'
-  #     replace: '0.0.0.0'
+   - name: configure
+     replace:
+      path: /etc/mongod.conf
+      regexp: '127.0.0.1'
+      replace: '0.0.0.0'
 
-   - name: Configure MongoDB bind IP
-     ansible.builtin.replace:
-        path: /etc/mongod.conf
-        regexp: '127\.0\.0\.1'
-        replace: '0.0.0.0'
-        backup: true
+  #  - name: Configure MongoDB bind IP
+  #    ansible.builtin.replace:
+  #       path: /etc/mongod.conf
+  #       regexp: '127\.0\.0\.1'
+  #       replace: '0.0.0.0'
+  #       backup: true
 
-   - name: start mongodb
+   - name: restart mongodb
      systemd_service:
        name: mongod
        state: restarted
-       enabled: true
+       
      
    
 
