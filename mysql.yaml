@@ -1,8 +1,6 @@
 - name: configure mysql
   hosts: mysql
   become: yes
-  vars:
-    mysql_root_password: "RoboShop@1"
 
   tasks:
    - name: enable mysql
