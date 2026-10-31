@@ -1,0 +1,10 @@
+- name: redis configure
+  hosts: redis
+  become: yes
+
+  tasks:
+   package:
+    name: redis
+    state: absent
+   
+   
