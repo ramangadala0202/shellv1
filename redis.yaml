@@ -3,9 +3,10 @@
   become: yes
 
   tasks:
-   - name: disable package
+   - name: uninstall package
      package:
       name: redis
       state: absent
    
-   
+   - name: disable package
+     command: dnf module disable redis -y
