@@ -5,7 +5,7 @@
   tasks:
    - name: disable package
      package:
-     name: redis
-     state: absent
+      name: redis
+      state: absent
    
    
