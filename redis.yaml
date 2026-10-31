@@ -3,8 +3,9 @@
   become: yes
 
   tasks:
-   package:
-    name: redis
-    state: absent
+   - name: disable package
+     package:
+     name: redis
+     state: absent
    
    
