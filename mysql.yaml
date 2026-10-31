@@ -23,8 +23,11 @@
         name: python3-PyMySQL
         state: present
 
-   - name: Set MySQL root password
-     ansible.mysql.mysql_user:
-        name: root
-        password: "{{ mysql_root_password }}"
-        state: present
+  #  - name: Set MySQL root password
+  #    ansible.mysql.mysql_user:
+  #       name: root
+  #       password: "{{ mysql_root_password }}"
+  #       state: present
+
+   - name: set root 
+     command: mysql_secure_installation --set-root-pass RoboShop@1
