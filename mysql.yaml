@@ -20,6 +20,11 @@
        state: started
        enabled: true
 
+   - name: Install Python MySQL dependency
+     dnf:
+        name: python3-PyMySQL
+        state: present
+
    - name: Set MySQL root password
      ansible.mysql.mysql_user:
         name: root
