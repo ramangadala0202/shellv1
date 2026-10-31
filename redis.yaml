@@ -10,3 +10,28 @@
    
    - name: disable package
      command: dnf module disable redis -y
+
+   - name: enable package
+     command: dnf module enable redis:7 -y
+
+   - name: install package
+     package:
+      name: redis
+      state: present
+
+  #  - name: configure
+  #    path: /etc/redis/redis.conf
+  #    command: sed -i -e 's/^bind 127.0.0.1/bind 0.0.0.0/' -e 's/^protected-mode yes/protected-mode no/' /etc/redis/redis.conf
+
+   - name: configure
+     replace:
+      path: /etc/redis/redis.conf
+      regexp: '127.0.0.1'
+      replace: '0.0.0.0'
+
+    - name: Disable Redis protected mode
+      replace:
+        path: /etc/redis/redis.conf
+        regexp: '^protected-mode\s+yes'
+        replace: 'protected-mode no'
+        backup: true
