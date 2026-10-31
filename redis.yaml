@@ -26,9 +26,9 @@
       replace: '0.0.0.0'
 
    - name: configure Redis protected mode
-     replace:
+     lineinfile:
         path: /etc/redis/redis.conf
-        regexp: '^protected-mode\s+yes'
+        regexp: '^#?protected-mode yes'
         replace: 'protected-mode no'
         backup: true
       
