@@ -4,9 +4,8 @@
 
   tasks:
    - name: enable mysql
-     systemd_service:
-       name: mysql:8.4
-       enabled: true
+     ansible.builtin.command:
+        cmd: dnf module enable mysql:8.4 -y
 
    - name: install mongodb
      dnf:
