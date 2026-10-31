@@ -31,3 +31,9 @@
         regexp: '^protected-mode\s+yes'
         replace: 'protected-mode no'
         backup: true
+      
+   - name: start redis
+     systemd_service:
+       name: redis
+       state: started
+       enabled: true
