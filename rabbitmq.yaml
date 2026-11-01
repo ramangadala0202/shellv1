@@ -16,9 +16,10 @@
       state: present
 
    - name: enable and start
-     package: rabbitmq-server
-     state: started
-     enabled: true
+     systemd_service: 
+      name: rabbitmq-server
+      state: started
+      enabled: true
 
    - name: Create RabbitMQ user and assign permissions
      community.rabbitmq.rabbitmq_user:
