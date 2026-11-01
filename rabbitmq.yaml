@@ -3,30 +3,30 @@
   become: yes
 
   tasks:
-   name: repo file setup
-   copy:
-    src: rabbitmq.repo
-    dest: /etc/yum.repos.d/rabbitmq.repo
+   - name: repo file setup
+     copy:
+      src: rabbitmq.repo
+      dest: /etc/yum.repos.d/rabbitmq.repo
 
-   name: installation
-   dnf:
-    name:
+   - name: installation
+     dnf:
+      name:
         - erlang
         - rabbitmq-server
-    state: present
+      state: present
 
-   name: enable and start
-   package: rabbitmq-server
-   state: started
-   enabled: true
+   - name: enable and start
+     package: rabbitmq-server
+     state: started
+     enabled: true
 
-   name: Create RabbitMQ user and assign permissions
-   community.rabbitmq.rabbitmq_user:
-    user: roboshop
-    password: roboshop123
-    vhost: /
-    configure_priv: ".*"
-    write_priv: ".*"
-    read_priv: ".*"
-    state: present
-   no_log: true
+   - name: Create RabbitMQ user and assign permissions
+     community.rabbitmq.rabbitmq_user:
+      user: roboshop
+      password: roboshop123
+      vhost: /
+      configure_priv: ".*"
+      write_priv: ".*"
+      read_priv: ".*"
+      state: present
+     no_log: true
