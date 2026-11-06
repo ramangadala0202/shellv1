@@ -16,13 +16,13 @@
 
    - name: Create RoboShop system user
      user:
-     name: roboshop
-     system: true
-     home: /app
-     shell: /sbin/nologin
-     comment: "roboshop system user"
-     create_home: false
-     state: present
+      name: roboshop
+      system: true
+      home: /app
+      shell: /sbin/nologin
+      comment: "roboshop system user"
+      create_home: false
+      state: present
 
    - name: Download Catalogue application
      get_url:
