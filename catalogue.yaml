@@ -1,0 +1,62 @@
+- name: configure catalogue
+  hosts: catalogue
+  become: yes
+
+  tasks:
+   - name: disable module
+     command: dnf module disable nodejs -y
+
+   - name: enable app
+     command: module enable nodejs:24 -y
+
+   - name: install package
+     package:
+      name: nodejs
+      status: present
+
+   - name: Create RoboShop system user
+     user:
+     name: roboshop
+     system: true
+     home: /app
+     shell: /sbin/nologin
+     comment: "roboshop system user"
+     create_home: false
+     state: present
+
+   - name: Download Catalogue application
+     get_url:
+      url: https://raw.githubusercontent.com/daws-92s/roboshop-documentation/refs/heads/main/artifacts/catalogue-v4.zip
+      dest: /tmp/catalogue.zip
+
+   - name: Create application directory
+     file:
+      path: /app
+      state: directory
+      owner: roboshop
+      group: roboshop
+
+   - name: unzip the package
+     unarcheive:
+       src: /tmp/catalogue.zip
+       dest: /app
+       remote_src: true
+       owner: roboshop
+       group: roboshop
+
+   - name: Install Catalogue application dependencies
+     community.general.npm:
+     path: /app
+     state: present
+   
+   - name: configuring repo file
+     copy:
+      src:  catalogue.repo
+      dest: /etc/systemd/system/catalogue.service
+
+   - name: Reload systemd, enable and start Catalogue service
+     systemd_service:
+     name: catalogue
+     daemon_reload: true
+     enabled: true
+     state: started
