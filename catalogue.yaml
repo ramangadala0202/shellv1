@@ -37,7 +37,7 @@
       group: roboshop
 
    - name: unzip the package
-     unarcheive:
+     ansible.builtin.unarchive:
        src: /tmp/catalogue.zip
        dest: /app
        remote_src: true
