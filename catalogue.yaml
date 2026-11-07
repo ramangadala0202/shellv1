@@ -76,7 +76,7 @@
         argv:
           - mongosh
           - --host
-          - "{{ mongodb.ram0202.store }}"
+          - "mongodb.ram0202.store"
           - --quiet
           - --eval
           - 'db.getSiblingDB("catalogue").products.countDocuments()'
