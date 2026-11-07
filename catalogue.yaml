@@ -85,4 +85,9 @@
    - name: Display number of products
      debug:
         msg: "Number of products: {{ products_count.stdout }}"
+
+   - name: Load master data when products collection is empty
+     ansible.builtin.shell:
+      cmd: "mongosh --host mongodb.ram0202.store < /app/db/master-data.js"
+     when: products_count.stdout | trim | int == 0
       
