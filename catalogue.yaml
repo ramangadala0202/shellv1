@@ -83,6 +83,6 @@
      register: products_count
 
    - name: Display number of products
-      ansible.builtin.debug:
+     debug:
         msg: "Number of products: {{ products_count.stdout }}"
       
