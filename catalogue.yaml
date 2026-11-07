@@ -70,4 +70,19 @@
      package:
       name: mongodb-mongosh
       state: present
+
+   - name: Count products in catalogue database
+     ansible.builtin.command:
+        argv:
+          - mongosh
+          - --host
+          - "{{ mongodb.ram0202.store }}"
+          - --quiet
+          - --eval
+          - 'db.getSiblingDB("catalogue").products.countDocuments()'
+     register: products_count
+
+   - name: Display number of products
+      ansible.builtin.debug:
+        msg: "Number of products: {{ products_count.stdout }}"
       
