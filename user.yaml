@@ -7,7 +7,7 @@
      command: dnf module disable nodejs -y
 
    - name: enable command
-     command: dnf module enable nodejs -y
+     command: dnf module enable nodejs:24 -y
 
    - name: install package
      dnf:
