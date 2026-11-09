@@ -84,7 +84,7 @@
 
    - name: Display number of products
      debug:
-        msg: "Number of products: {{ products_count.stdout }}"
+        msg: "Number of products: {{ products_count }}"
 
    - name: Load master data when products collection is empty
      ansible.builtin.shell:
