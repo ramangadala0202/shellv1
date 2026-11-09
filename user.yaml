@@ -4,10 +4,10 @@
 
   tasks: 
    - name: disable command
-     cmd: dnf module disable nodejs -y
+     command: dnf module disable nodejs -y
 
    - name: enable command
-     cmd: dnf module enable nodejs -y
+     command: dnf module enable nodejs -y
 
    - name: install package
      dnf:
