@@ -1,0 +1,62 @@
+- name: configure cart
+  hosts: cart
+  become: yes
+
+  tasks:
+   - name: disable module
+     command: dnf module disable nodejs -y
+
+   - name: enable app
+     command: dnf module enable nodejs:24 -y
+
+   - name: install package
+     package:
+      name: nodejs
+      state: present
+
+   - name: Create RoboShop system user
+     user:
+      name: roboshop
+      system: true
+      home: /app
+      shell: /sbin/nologin
+      comment: "roboshop system user"
+      create_home: false
+      state: present
+
+   - name: Download cart application
+     get_url:
+      url: https://raw.githubusercontent.com/daws-92s/roboshop-documentation/refs/heads/main/artifacts/cart-v4.zip
+      dest: /tmp/cart.zip
+
+   - name: Create application directory
+     file:
+      path: /app
+      state: directory
+      owner: roboshop
+      group: roboshop
+
+   - name: unzip the package
+     ansible.builtin.unarchive:
+       src: /tmp/cart.zip
+       dest: /app
+       remote_src: true
+       owner: roboshop
+       group: roboshop
+
+   - name: Install cart application dependencies
+     community.general.npm:
+      path: /app
+      state: present
+   
+   - name: configuring repo file
+     copy:
+      src:  cart.repo
+      dest: /etc/systemd/system/cart.service
+
+   - name: Reload systemd, enable and start cart service
+     systemd_service:
+      name: cart
+      daemon_reload: true
+      enabled: true
+      state: started
