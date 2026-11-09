@@ -54,8 +54,8 @@
       src: user.repo
       dest: /etc/systemd/system/user.service
 
-    - name: reload and restart
-      service:
+   - name: reload and restart
+     service:
        name: user
        daemon_reload : true
        enabled: true
