@@ -1,0 +1,66 @@
+- name: configure user
+  hosts: user
+  become: yes
+
+  tasks: 
+   - name: disable command
+     cmd: dnf module disable nodejs -y
+
+   - name: enable command
+     cmd: dnf module enable nodejs -y
+
+   - name: install package
+     dnf:
+      name: nodejs
+      state: present
+
+   - name: create a user
+     user:
+      name: roboshop
+      system: false
+      home: /app
+      shell: /sbin/nologin
+      comment: "roboshop system user"
+      create_home: false
+      state: present
+
+   - name: create a directory
+     file:
+      path: /app
+      state: directory
+      owner: roboshop
+      group: roboshop
+
+   - name: Download Catalogue application
+     get_url:
+      url: https://raw.githubusercontent.com/daws-92s/roboshop-documentation/refs/heads/main/artifacts/catalogue-v4.zip
+      dest: /tmp/catalogue.zip
+
+   - name: Extract User application
+     unarchive:
+       src: /tmp/user.zip
+       dest: /app
+       remote_src: true
+       owner: roboshop
+       group: roboshop
+
+   - name: Install Catalogue application dependencies
+     community.general.npm:
+      path: /app
+      state: present
+
+   - name: setting systemd service
+     copy: 
+      src: user.repo
+      dest: /etc/systemd/system/user.service
+
+    - name: reload and restart
+      service:
+       name: user
+       daemon_reload : true
+       enabled: true
+       state: restarted
+
+
+
+       
