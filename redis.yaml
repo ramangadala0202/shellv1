@@ -3,34 +3,34 @@
   become: yes
 
   tasks:
-   - name: uninstall package
-     package:
-      name: redis
-      state: absent
+  #  - name: uninstall package
+  #    package:
+  #     name: redis
+  #     state: absent
    
-   - name: disable package
-     command: dnf module disable redis -y
+  #  - name: disable package
+  #    command: dnf module disable redis -y
 
-   - name: enable package
-     command: dnf module enable redis:7 -y
+  #  - name: enable package
+  #    command: dnf module enable redis:7 -y
 
-   - name: install package
-     package:
-      name: redis
-      state: present
+  #  - name: install package
+  #    package:
+  #     name: redis
+  #     state: present
 
-   - name: configure
-     replace:
-      path: /etc/redis/redis.conf
-      regexp: '127.0.0.1'
-      replace: '0.0.0.0'
+  #  - name: configure
+  #    replace:
+  #     path: /etc/redis/redis.conf
+  #     regexp: '127.0.0.1'
+  #     replace: '0.0.0.0'
 
-   - name: configure Redis protected mode
-     lineinfile:
-        path: /etc/redis/redis.conf
-        regexp: '^#?protected-mode yes'
-        replace: 'protected-mode no'
-        backup: true
+  # #  - name: configure Redis protected mode
+  # #    lineinfile:
+  # #       path: /etc/redis/redis.conf
+  # #       regexp: '^#?protected-mode yes'
+  # #       replace: 'protected-mode no'
+  # #       backup: true
       
    - name: start redis
      systemd_service:
