@@ -25,12 +25,12 @@
   #     regexp: '127.0.0.1'
   #     replace: '0.0.0.0'
 
-   - name: configure Redis protected mode
-     lineinfile:
-        path: /etc/redis/redis.conf
-        regexp: '^#?protected-mode yes'
-        replace: 'protected-mode no'
-        backup: true
+   - name: Configure Redis protected mode
+     ansible.builtin.lineinfile:
+      path: /etc/redis/redis.conf
+      regexp: '^\s*#?\s*protected-mode\s+.*$'
+      line: 'protected-mode no'
+      backup: true
       
    - name: start redis
      systemd_service:
