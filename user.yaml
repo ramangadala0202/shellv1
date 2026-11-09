@@ -52,7 +52,7 @@
    - name: setting systemd service
      copy: 
       src: user.repo
-      dest: /etc/systemd/system/user.service
+      dest: /etc/systemd/system/user.service.j2
 
    - name: reload and restart
      service:
