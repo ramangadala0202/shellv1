@@ -33,8 +33,8 @@
 
    - name: Download Catalogue application
      get_url:
-      url: https://raw.githubusercontent.com/daws-92s/roboshop-documentation/refs/heads/main/artifacts/catalogue-v4.zip
-      dest: /tmp/catalogue.zip
+      url: https://raw.githubusercontent.com/daws-92s/roboshop-documentation/refs/heads/main/artifacts/user-v4.zip
+      dest: /tmp/user.zip
 
    - name: Extract User application
      unarchive:
