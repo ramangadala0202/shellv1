@@ -1,0 +1,24 @@
+- name: Configure shipping
+  hosts: shipping
+  become: yes
+
+- tasks:
+  - name: enable maven
+    command: dnf module enable maven:3.9 -y
+
+  - name: install maven and jdk
+    dnf:
+      name: maven
+      state: present
+
+  - name: install maven and jdk
+    dnf:
+      name: java-25-openjdk-devel
+      state: present
+
+  - name: find java25 path
+    shell: readlink -f $(ls /usr/lib/jvm/java-25-openjdk*/bin/java | head -1)
+    register: java25
+    
+     
+     
