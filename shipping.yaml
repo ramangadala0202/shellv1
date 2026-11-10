@@ -63,16 +63,14 @@
        group: roboshop
 
   - name: Build the Shipping application
-    ansible.builtin.command:
-      cmd: mvn clean package
-      args:
+    command: mvn clean package
+    args:
        chdir: /app
 
 - name: Rename shipping JAR file
-  ansible.builtin.command:
-    cmd: mv target/shipping.jar shipping.jar
-    args:
-       chdir: /app
+  command: mv target/shipping.jar shipping.jar
+  args:
+    chdir: /app
 
      
      
