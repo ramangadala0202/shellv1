@@ -2,7 +2,7 @@
   hosts: shipping
   become: yes
 
-- tasks:
+  tasks:
   - name: enable maven
     command: dnf module enable maven:3.9 -y
 
