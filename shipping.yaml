@@ -23,5 +23,56 @@
   - name: print
     debug:
      msg: "{{ java25 }}"
+
+  - name: set JAVA HOME
+    command: alternatives --set java {{ java25.stdout}}
+
+  - name: JAVA HOME permanenet set
+    copy: 
+     content: "export JAVA_HOME={{ java25.stdout | dirname | dirname }}"
+     dest: /etc/profile.d/java.sh
+
+  - name: Create RoboShop system user
+    user:
+      name: roboshop
+      system: true
+      home: /app
+      shell: /sbin/nologin
+      comment: "roboshop system user"
+      create_home: false
+      state: present
+
+  - name: Download shipping application
+    get_url:
+      url: https://raw.githubusercontent.com/daws-92s/roboshop-documentation/refs/heads/main/artifacts/shipping-v4.zip
+      dest: /tmp/shipping.zip
+
+  - name: Create application directory
+    file:
+      path: /app
+      state: directory
+      owner: roboshop
+      group: roboshop
+
+  - name: unzip the package
+    ansible.builtin.unarchive:
+       src: /tmp/shipping.zip
+       dest: /app
+       remote_src: true
+       owner: roboshop
+       group: roboshop
+
+  - name: Build the Shipping application
+    ansible.builtin.command:
+      cmd: mvn clean package
+      args:
+       chdir: /app
+
+- name: Rename shipping JAR file
+  ansible.builtin.command:
+    cmd: mv target/shipping.jar shipping.jar
+    args:
+       chdir: /app
+
      
      
