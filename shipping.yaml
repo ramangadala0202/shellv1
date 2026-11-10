@@ -19,6 +19,9 @@
   - name: find java25 path
     shell: readlink -f $(ls /usr/lib/jvm/java-25-openjdk*/bin/java | head -1)
     register: java25
-    
+
+  - name: print
+    debug:
+     msg: "{{ java25 }}"
      
      
