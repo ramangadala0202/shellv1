@@ -67,10 +67,10 @@
     args:
        chdir: /app
 
-- name: Rename shipping JAR file
-  command: mv target/shipping.jar shipping.jar
-  args:
-    chdir: /app
+  - name: Rename shipping JAR file
+    command: mv target/shipping.jar shipping.jar
+    args:
+       chdir: /app
 
      
      
