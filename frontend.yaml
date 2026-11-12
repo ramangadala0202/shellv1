@@ -31,3 +31,10 @@
    - name: print
      debug:
       msg: "{{ nginx_html_contents }}"
+
+   - name: Delete
+     file:
+      path: "{{ item.path }}"
+      state: absent
+     loop: "{{nginx_html_contents.files}}"
+
