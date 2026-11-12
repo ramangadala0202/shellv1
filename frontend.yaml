@@ -42,4 +42,5 @@
      template:
       src: frontend.conf.j2
       dest: /etc/nginx/default.d/roboshop.conf
+      tags: copy
 
