@@ -4,14 +4,14 @@
 
   tasks:
    - name: disable module
-     command: dnf module disable nodejs -y
+     command: dnf module disable nginx -y
 
    - name: enable app
-     command: dnf module enable nodejs:24 -y
+     command: dnf module enable nginx:1.26 -y
 
    - name: install package
      package:
-      name: nodejs
+      name: nginx
       state: present
 
    - name: Reload systemd, enable and start Catalogue service
