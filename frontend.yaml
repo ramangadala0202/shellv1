@@ -22,8 +22,8 @@
 
    - name: Find files and directories inside Nginx HTML directory
      ansible.builtin.find:
-     paths: /usr/share/nginx/html
-     file_type: any
-     hidden: true
-     recurse: false
+      paths: /usr/share/nginx/html
+      file_type: any
+      hidden: true
+      recurse: false
      register: nginx_html_contents
