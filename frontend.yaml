@@ -26,4 +26,4 @@
      file_type: any
      hidden: true
      recurse: false
-  register: nginx_html_contents
+     register: nginx_html_contents
