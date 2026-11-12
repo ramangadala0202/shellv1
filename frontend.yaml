@@ -38,3 +38,8 @@
       state: absent
      loop: "{{nginx_html_contents.files}}"
 
+   - name: copy
+     template:
+      src: frontend.conf.j2
+      dest: /etc/nginx/default.d/roboshop.conf
+
