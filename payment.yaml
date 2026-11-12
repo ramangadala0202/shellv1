@@ -57,7 +57,8 @@
 
   - name: Reload systemd, enable and start Catalogue service
     systemd_service:
-      name: catalogue
+      name: payment
       daemon_reload: true
       enabled: true
       state: restarted
+      tags: paymenttag
