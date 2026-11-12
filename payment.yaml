@@ -1,0 +1,50 @@
+- name: Configure Payment Module
+  hosts: payment
+  become: yes
+
+  tasks:
+  - name: Install Python 3.14 and pip
+    ansible.builtin.dnf:
+    name:
+      - python3.14
+      - python3.14-pip
+    state: present
+
+  - name: Create RoboShop system user
+    user:
+      name: roboshop
+      system: true
+      home: /app
+      shell: /sbin/nologin
+      comment: "roboshop system user"
+      create_home: false
+    state: present
+
+
+  - name: Download payment application
+    get_url:
+      url: https://raw.githubusercontent.com/daws-92s/roboshop-documentation/refs/heads/main/artifacts/payment-v4.zip
+      dest: /tmp/payment.zip
+
+  - name: Create application directory
+    file:
+      path: /app
+      state: directory
+      owner: roboshop
+      group: roboshop
+
+  - name: unzip the package
+    ansible.builtin.unarchive:
+       src: /tmp/payment.zip
+       dest: /app
+       remote_src: true
+       owner: roboshop
+       group: roboshop
+
+  - name: Create Python 3.14 virtual environment
+    command: python3.14 -m venv /app/.venv
+    
+  - name: Install Python dependencies
+    ansible.builtin.pip:
+     requirements: /app/requirements.txt
+     virtualenv: /app/.venv
