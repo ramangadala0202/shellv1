@@ -27,3 +27,7 @@
       hidden: true
       recurse: false
      register: nginx_html_contents
+
+   - name: print
+     debug:
+      msg: "{{ nginx_html_contents }}"
