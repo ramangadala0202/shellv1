@@ -16,7 +16,7 @@
 
    - name: Reload systemd, enable and start Catalogue service
      systemd_service:
-      name: frontend
+      name: nginx
       enabled: true
       state: started
 
