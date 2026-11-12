@@ -1,0 +1,29 @@
+- name: configure frontend
+  hosts: frontend
+  become: yes
+
+  tasks:
+   - name: disable module
+     command: dnf module disable nodejs -y
+
+   - name: enable app
+     command: dnf module enable nodejs:24 -y
+
+   - name: install package
+     package:
+      name: nodejs
+      state: present
+
+   - name: Reload systemd, enable and start Catalogue service
+     systemd_service:
+      name: frontend
+      enabled: true
+      state: started
+
+- name: Find files and directories inside Nginx HTML directory
+  ansible.builtin.find:
+    paths: /usr/share/nginx/html
+    file_type: any
+    hidden: true
+    recurse: false
+  register: nginx_html_contents
