@@ -1,11 +1,11 @@
 - name: create ec2 instances
   amazon.aws.ec2_instance:
-      name: "roboshop-{{ item }}"
+      name: "roboshop-{{ component }}"
       image_id: "{{ ami_id }}"
       instance_type: t3.micro
       security_groups:
         - roboshop-common
-        - "roboshop-{{item}}"
+        - "roboshop-{{ component }}"
       region: us-east-1
       loop: "{{instances}}"
       when: infra_action=="create"
