@@ -1,12 +1,30 @@
+# - name: provision infrastructure
+#   hosts: localhost
+#   connection: local
+#   gather_facts: no
+#   roles:
+#     - "{{ component }}"
+
+# - name: configure {{ component }}
+#   hosts: "{{ component }}"
+#   become: yes
+#   roles:
+#     - "{{ component }}"
+
+
 - name: provision infrastructure
   hosts: localhost
   connection: local
   gather_facts: no
-  roles:
-    - "{{ component }}"
+  tasks:
+    - name: Run infrastructure role
+      include_role:
+        name: "{{ component }}"
 
 - name: configure {{ component }}
   hosts: "{{ component }}"
   become: yes
-  roles:
-    - "{{ component }}"
+  tasks:
+    - name: Run configuration role
+      include_role:
+        name: "{{ component }}"
