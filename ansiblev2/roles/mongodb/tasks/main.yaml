@@ -1,5 +1,5 @@
 - name: create ec2 instances
-  hosts: localhost
+  hosts: local
   connection: local
   vars:
     instances: ["mongodb"]
