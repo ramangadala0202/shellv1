@@ -1,25 +1,26 @@
-- name: create ec2 instances
+- name: create ec2
   amazon.aws.ec2_instance:
-      name: "roboshop-{{ component }}"
-      image_id: "{{ ami_id }}"
-      instance_type: t3.micro
-      security_groups:
-        - roboshop-common
-        - "roboshop-{{ component }}"
-      region: us-east-1
-      loop: "{{instances}}"
-      when: infra_action=="create"
-      register: ec2_output
+    name: "roboshop-{{ item }}"
+    image_id: "{{ ami_id }}"
+    instance_type: t3.micro
+    security_groups:
+      - roboshop-common
+      - "roboshop-{{ item }}"
+    region: us-east-1
+  loop: "{{ instances }}"
+  when: action == "create"
+  register: ec2_output
+  # Verification: EC2 instance is created successfully in AWS.
 
 - name: create R53 record
   amazon.aws.route53:
-      state: present
-      zone: "{{domain_name}}"
-      record: "{{ item.item }}.{{ domain_name }}"
-      type: A
-      ttl: 1
-      overwrite: true
-      value: "{{item.instances[0].public_ip_address }}"
-      loop: "{{ec2_output.results}}"
-      when: infra_action=="create"
-    
+    state: present
+    zone: "{{ domain_name }}"
+    record: "{{ item.item }}.{{ domain_name }}"
+    type: A
+    ttl: 1
+    overwrite: true
+    value: "{{ item.instances[0].public_ip_address }}"
+  loop: "{{ ec2_output.results }}"
+  when: action == "create"
+  # Verification: Route 53 DNS record points to the new public IP.

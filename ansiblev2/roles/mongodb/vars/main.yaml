@@ -1,4 +1,4 @@
 instances: ["mongodb"]
-infra_action: create
-domain_name: ram0202.store
+action: create
+domian_name: ram0202.store
 ami_id: ami-0055977a6e8284f4
